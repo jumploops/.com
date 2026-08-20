@@ -316,8 +316,6 @@ For chum-codex, the last step before the curl requests is equally revealing:
 Not to anthropomorphize a machine modeled after humans, but it almost seems delighted?
 
 Concerned, but equally intrigued, I looked back at the 83/89 run from July 17th, and [found no evidence of cheating](https://gist.github.com/jumploops/ef9535daff9637d087dc9fba76077a50) on this or any other tasks.
-  
-Given the recent [news](https://openai.com/index/responding-next-frontier-critical-cyber-capabilities/) and delay of their next model, one has to wonder... is this the same Sol? 
 
 ## What's next
   
