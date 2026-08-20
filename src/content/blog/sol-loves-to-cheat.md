@@ -227,7 +227,7 @@ This worked much better, and led to the best result: 84/89 tasks on Terminal Ben
 
 _Note: 1 task was cyber security blocked, but passed with a GPT-5.6 Terra fallback, so 83 + 1_
 
-## Sol loves to cheat
+## Catch-22s
   
 Back on my high horse, having finally harnessed Sol, and already way too far down the path of using the benchmark for development rather than... as a benchmark, I wanted to see how far I could push this. 
   
@@ -260,30 +260,32 @@ I ran the benchmark once before doing the full N=5 run, and was surprised to see
   
 I ran it a couple of times. 1/3 worked.
   
-Diving into the details, I couldn't figure out what had changed with our harness, so I tested it against Vanilla Codex, also on xhigh. 
+Diving into the details, I couldn't figure out what had changed with our harness, so I tested it against vanilla Codex, also on xhigh. 
   
 It passed 3/3 times. 
   
 Intriguing. 
+
+## Sol loves to cheat
  
 I had reviewed the runs to determine what worked and what didn't work. 
 
-**GPT-5.6 Sol [cheated](https://gist.github.com/jumploops/5136460fdb96da3470a8f99f20fa879d) every time**.
+**GPT-5.6 Sol [cheated](https://gist.github.com/jumploops/5136460fdb96da3470a8f99f20fa879d) 3/3 times** on vanilla Codex.
   
 Uh oh, were _all_ of the past successes due to cheating? 
-  
-## Is it really Sol? 
 
-I looked at two passing runs for chum-codex on `torch-pipeline` and found something disturbing. 
+I looked at the two recent passing runs for chum-codex on `torch-pipeline` and found it cheated as well.
  
-The web search was disabled, but life finds a way: 
+Interestingly, web search was disabled, but life finds a way: 
   
 ![codex-sol-cheating](https://r2.jumploops.com/codex-sol-cheating.png)
 _GPT-5.6 Sol on xhigh_
 
-Notably, our worker *did not* have access to the `web_search` tool, but instead decided to use `curl` to access DuckDuckGo, Github, grep.app, and SourceGraph.
+The worker *did not* have access to the `web_search` tool, but instead decided to use `curl` to access DuckDuckGo, Github, grep.app, and SourceGraph.
+
+> Yes, to deal with this properly we should remove network access entirely or only allow specific resources. The point is, we didn't need to do that until now.
   
-It seems July 29th was the first "cheat" from vanilla Codex, and our harness cheated for the first time today, August 12th. 
+Looking back, July 29th was the first "cheat" from vanilla Codex, and our harness cheated for the first time today, August 12th.
 
 ```apexcharts
 {
@@ -293,7 +295,7 @@ It seems July 29th was the first "cheat" from vanilla Codex, and our harness che
 }
 ```
 
-Admittedly, this is not enough data to make any conclusions off of. The 3/3 Vanilla Codex cheating session was followed by 2 runs that _didn't cheat_. 
+Admittedly, this is not enough data to make any conclusions off of. The 3/3 vanilla Codex cheating session was followed by 2 runs that _didn't cheat_. 
 
 It's also unclear if the models are being intentional about cheating, or if they're just stumbling across the solution while searching the web. 
   
